@@ -1,0 +1,204 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* Background */
+.app {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0a1a3a, #0f2b55);
+  color: white;
+  padding: 60px;
+  overflow: hidden;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 2;
+  animation: fadeContent 1s ease forwards;
+}
+
+@keyframes fadeContent {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo {
+  font-size: 14px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+}
+
+.title {
+  font-size: 60px;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+/* Search Box */
+.search-box {
+  margin-top: 40px;
+  width: 400px;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.4s ease;
+  position: relative;
+}
+
+.search-box.active {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
+}
+
+.search-box input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+}
+
+.search-box input::placeholder {
+  color: #aaa;
+}
+
+/* Suggestions */
+.suggestions {
+  list-style: none;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.suggestions li {
+  padding: 10px 0;
+  color: #bbb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.suggestions li:hover {
+  color: white;
+  padding-left: 10px;
+}
+
+.no-result {
+  color: #777;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  bottom: 50px;
+  width: 250px;
+  height: 120px;
+  background: #ffffff20;
+  border-radius: 100px;
+  animation: floatCloud 40s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #ffffff20;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 130px;
+  height: 130px;
+  top: -60px;
+  left: 40px;
+}
+
+.cloud::after {
+  width: 100px;
+  height: 100px;
+  top: -40px;
+  left: 130px;
+}
+
+.cloud1 {
+  left: -300px;
+  animation-duration: 60s;
+}
+
+.cloud2 {
+  left: -500px;
+  bottom: 120px;
+  animation-duration: 80s;
+}
+
+@keyframes floatCloud {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150vw);
+  }
+}
+/* Weather Card */
+.weather-card {
+  margin-top: 40px;
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.5s ease forwards;
+  text-align: center;
+}
+
+.weather-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.weather-icon {
+  font-size: 60px;
+  animation: bounce 2s infinite;
+}
+
+.weather-card p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Sun/Rain Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
