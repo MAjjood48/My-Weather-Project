@@ -1,4 +1,4 @@
-/* Reset */
+/* removing margin and padding from everything to start fresh */
 * {
   margin: 0;
   padding: 0;
@@ -6,31 +6,33 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* hiding scrollbar so screen looks full */
 body {
   overflow: hidden;
 }
 
-/* Background */
+/* background - gradient from dark blue to lighter blue */
 .app {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* - full screen height */
   background: linear-gradient(to bottom, #0a1a3a, #0f2b55);
   color: white;
   padding: 60px;
   overflow: hidden;
 }
 
-/* Content */
+/* content above clouds because of z-index */
 .content {
   position: relative;
   z-index: 2;
-  animation: fadeContent 1s ease forwards;
+  animation: fadeContent 1s ease forwards; /* animation - appear animation on load */
 }
 
+/* animation that shows content sliding up */
 @keyframes fadeContent {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px); /* بيبدأ من تحت -  */
   }
   to {
     opacity: 1;
@@ -38,74 +40,87 @@ body {
   }
 }
 
+/* app name - small and a bit transparent */
 .logo {
   font-size: 14px;
-  letter-spacing: 4px;
+  letter-spacing: 4px; /* - space between letters */
   opacity: 0.6;
 }
 
+/* big "Search" title */
 .title {
   font-size: 60px;
   margin-top: 40px;
   font-weight: 500;
 }
 
-/* Search Box */
+/* search box - transparent with blur */
 .search-box {
   margin-top: 40px;
   width: 400px;
   padding: 20px;
   border-radius: 20px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); /* blur- blurs what's behind it */
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: 0.4s ease;
   position: relative;
 }
 
+/* when active it scales up a bit */
 .search-box.active {
   background: rgba(255, 255, 255, 0.08);
   transform: scale(1.02);
 }
 
+/* text input inside the box */
 .search-box input {
   width: 100%;
   background: transparent;
   border: none;
-  outline: none;
+  outline: none; /* - removes outline on focus */
   color: white;
   font-size: 16px;
 }
 
+/* placeholder color */
 .search-box input::placeholder {
   color: #aaa;
 }
 
-/* Suggestions */
+/* suggestions list */
 .suggestions {
-  list-style: none;
+  list-style: none; /* - removes list bullets */
   margin-top: 20px;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: auto; /* scroll لو المدن كتير - scroll if many cities */
   animation: fadeIn 0.3s ease forwards;
 }
 
+/* كل عنصر في القايمة */
+/* each item in the list */
 .suggestions li {
   padding: 10px 0;
   color: #bbb;
-  cursor: pointer;
+  cursor: pointer; /* بيخلي المؤشر ايد - makes cursor a hand */
   transition: 0.3s;
 }
 
+/* لما اعمل hover على عنصر بيتحرك شوية */
+/* on hover item moves slightly */
 .suggestions li:hover {
   color: white;
   padding-left: 10px;
 }
 
+/* نص "No results" */
+/* no results text */
 .no-result {
   color: #777;
 }
 
+/* animation ظهور القايمة */
+/* list appear animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -117,7 +132,8 @@ body {
   }
 }
 
-/* Clouds */
+/* السحب - بتتحرك من شمال لبيمين باستمرار */
+/* clouds - move continuously from left to right */
 .cloud {
   position: absolute;
   bottom: 50px;
@@ -128,6 +144,8 @@ body {
   animation: floatCloud 40s linear infinite;
 }
 
+/* الاجزاء العلوية من شكل السحابة */
+/* upper parts of the cloud shape */
 .cloud::before,
 .cloud::after {
   content: "";
@@ -136,6 +154,8 @@ body {
   border-radius: 50%;
 }
 
+/* الجزء الشمال العلوي */
+/* upper left part */
 .cloud::before {
   width: 130px;
   height: 130px;
@@ -143,6 +163,8 @@ body {
   left: 40px;
 }
 
+/* الجزء اليمين العلوي */
+/* upper right part */
 .cloud::after {
   width: 100px;
   height: 100px;
@@ -150,26 +172,34 @@ body {
   left: 130px;
 }
 
+/* السحابة الاولى */
+/* first cloud */
 .cloud1 {
-  left: -300px;
+  left: -300px; /* بتبدأ من برا الشاشة - starts off screen */
   animation-duration: 60s;
 }
 
+/* السحابة التانية - اعلى شوية وابطأ */
+/* second cloud - higher and slower */
 .cloud2 {
   left: -500px;
   bottom: 120px;
   animation-duration: 80s;
 }
 
+/* animation حركة السحب */
+/* cloud movement animation */
 @keyframes floatCloud {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(150vw);
+    transform: translateX(150vw); /* بتعدي الشاشة كلها - goes past the whole screen */
   }
 }
-/* Weather Card */
+
+/* كارت الطقس */
+/* weather card */
 .weather-card {
   margin-top: 40px;
   width: 300px;
@@ -182,23 +212,30 @@ body {
   text-align: center;
 }
 
+/* اسم المدينة في الكارت */
+/* city name in card */
 .weather-card h3 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
+/* الايقونة الكبيرة */
+/* big icon */
 .weather-icon {
   font-size: 60px;
-  animation: bounce 2s infinite;
+  animation: bounce 2s infinite; /* بتنط لفوق ولتحت - bounces up and down */
 }
 
+/* درجة الحرارة */
+/* temperature */
 .weather-card p {
   font-size: 24px;
   margin-top: 10px;
 }
 
-/* Sun/Rain Animation */
+/* animation النط */
+/* bounce animation */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-10px); } /* بتطلع لفوق - goes up */
 }
